@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-batch-uploader"
+version = "0.1.0"
+description = "Envio em lote de documentos PDF para portais web multi-tenant via Playwright, com perfis por tenant e validação do tenant ativo."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Lygia Teixeira" }]
+requires-python = ">=3.10"
+dependencies = [
+  "playwright==1.49.1",
+  "jsonschema==4.23.0",
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.4", "pyinstaller==6.11.1"]
+
+[project.scripts]
+pdf-batch-uploader = "pdf_batch_uploader.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pdf_batch_uploader*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["e2e: testes ponta a ponta com Playwright contra o portal demo local"]

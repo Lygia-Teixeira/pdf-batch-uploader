@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "kind": "export",
+  "tenants": {
+    "alfa": {
+      "display_name": "Alfa (matriz)",
+      "portal_name": "EMPRESA ALFA LTDA",
+      "portal": {
+        "base_url": "http://127.0.0.1:8765/",
+        "upload_path": "index.html",
+        "selectors": {
+          "logged_in": "#session-bar",
+          "active_tenant": "#active-tenant",
+          "tenant_picker": "#tenant-picker",
+          "tenant_activate": "#tenant-activate",
+          "upload_form": "#upload-form",
+          "file_input": "#file-input",
+          "period_input": "#period",
+          "annual_bonus_checkbox": "#annual-bonus",
+          "submit": "#submit-btn",
+          "success": "#result .ok",
+          "error": "#result .err",
+          "fields": {
+            "doc_type": "#doc-type",
+            "audience": "#audience",
+            "match_by": "#match-by"
+          }
+        }
+      },
+      "profiles": {
+        "Mensal - Ativos": {
+          "description": "Folha mensal de pessoal ativo",
+          "keywords": ["ativos", "mensal"],
+          "exclude_keywords": ["aposentados"],
+          "fields": {"doc_type": "MONTHLY", "audience": "ACTIVE", "match_by": "EMPLOYEE_ID"}
+        },
+        "Mensal - Aposentados": {
+          "keywords": ["aposentados"],
+          "fields": {"doc_type": "MONTHLY", "audience": "RETIRED", "match_by": "TAX_ID"}
+        },
+        "13 - Ativos": {
+          "keywords": ["ativos"],
+          "annual_bonus": true,
+          "fields": {"doc_type": "ANNUAL_BONUS", "audience": "ACTIVE", "match_by": "EMPLOYEE_ID"}
+        },
+        "Ferias": {
+          "keywords": ["ferias"],
+          "fields": {"doc_type": "VACATION", "audience": "ALL", "match_by": "EMPLOYEE_ID"}
+        }
+      }
+    },
+    "alfa-filial": {
+      "display_name": "Alfa (filial norte)",
+      "portal_name": "EMPRESA ALFA LTDA FILIAL NORTE",
+      "portal": {
+        "base_url": "http://127.0.0.1:8765/",
+        "upload_path": "index.html",
+        "selectors": {
+          "logged_in": "#session-bar",
+          "active_tenant": "#active-tenant",
+          "tenant_picker": "#tenant-picker",
+          "tenant_activate": "#tenant-activate",
+          "upload_form": "#upload-form",
+          "file_input": "#file-input",
+          "period_input": "#period",
+          "annual_bonus_checkbox": "#annual-bonus",
+          "submit": "#submit-btn",
+          "success": "#result .ok",
+          "error": "#result .err",
+          "fields": {"doc_type": "#doc-type", "audience": "#audience"}
+        }
+      },
+      "profiles": {
+        "Mensal - Todos": {
+          "keywords": ["mensal", "folha"],
+          "fields": {"doc_type": "MONTHLY", "audience": "ALL"}
+        }
+      }
+    }
+  }
+}
